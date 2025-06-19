@@ -1,0 +1,45 @@
+services:
+  ktor:
+    container_name: ktor-practice-ktor
+    build:
+      context: ./ktor
+      dockerfile: Dockerfile
+    env_file:
+      - ./ktor/app/.env
+    ports:
+      - "8081:8080"  # ホスト8081 → コンテナ8080
+    volumes:
+      - gradle-cache:/home/gradle/.gradle  # Gradleキャッシュ
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: ktor-practice
+      DB_USER: root
+      DB_PASS: password
+    networks:
+      - ktor-network
+
+  mysql:
+    container_name: ktor-practice-mysql
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+    ports:
+      - "3307:3306"  # ホスト3307 → コンテナ3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: ktor-practice
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+    networks:
+      - ktor-network
+
+volumes:
+  gradle-cache:
+
+networks:
+  ktor-network:
