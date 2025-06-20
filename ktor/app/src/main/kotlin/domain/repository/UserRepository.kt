@@ -2,12 +2,9 @@ package com.example.domain.repository
 
 import com.example.domain.model.User
 import com.example.domain.table.UserTable
+import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.deleteWhere
-import org.jetbrains.exposed.sql.insertAndGetId
-import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.jetbrains.exposed.sql.update
 
 class UserRepository{
     fun findById(id: Long): User? {
@@ -22,6 +19,21 @@ class UserRepository{
                     )
                 }
                 .singleOrNull()
+        }
+        return result
+    }
+
+    fun getAll(): List<User> {
+        var result: List<User> = emptyList()
+        transaction {
+            result = UserTable
+                .selectAll()
+                .map {
+                    User(
+                        id = it[UserTable.id].value,
+                        name = it[UserTable.name]
+                    )
+                }
         }
         return result
     }

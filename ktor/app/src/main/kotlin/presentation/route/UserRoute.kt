@@ -5,6 +5,10 @@ import io.ktor.server.routing.*
 
 fun Route.userRoutes(handler: UserHandler) {
     route("/users") {
+        // http://127.0.0.1:8081/users
+        get("") {
+            handler.getUsers(call)
+        }
         // http://127.0.0.1:8081/users/1
         get("{id}") {
             handler.getUser(call)

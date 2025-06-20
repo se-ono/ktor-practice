@@ -3,21 +3,24 @@ package com.example.presentation.handler
 import com.example.application.usecase.DeleteUserRequest
 import com.example.application.usecase.SaveUserRequest
 import com.example.application.usecase.UpdateUserRequest
-import com.example.presentation.controller.DeleteUserController
-import com.example.presentation.controller.GetUserController
-import com.example.presentation.controller.SaveUserController
-import com.example.presentation.controller.UpdateUserController
+import com.example.presentation.controller.*
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 
 class UserHandler(
+    private val getUsersController: GetUsersController,
     private val getUserController: GetUserController,
     private val saveUserController: SaveUserController,
     private val updateUserController: UpdateUserController,
     private val deleteUserController: DeleteUserController,
 ) {
+    suspend fun getUsers(call: ApplicationCall) {
+        val users = getUsersController.getUsers()
+        call.respond(HttpStatusCode.OK, users)
+    }
+
     suspend fun getUser(call: ApplicationCall) {
         val id = call.parameters["id"]?.toLongOrNull()
         if (id == null) {
