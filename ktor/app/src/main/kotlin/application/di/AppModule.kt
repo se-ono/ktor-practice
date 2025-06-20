@@ -1,17 +1,11 @@
 package com.example.application.di
 
-import com.example.application.usecase.GeocodingUseCase
-import com.example.application.usecase.GetUserUseCase
-import com.example.application.usecase.HelloWorldUseCase
-import com.example.application.usecase.WeatherUseCase
+import com.example.application.usecase.*
 import com.example.domain.repository.UserRepository
 import com.example.infrastructure.api.ExternalHttpClient
 import com.example.infrastructure.api.GeocodingApiClient
 import com.example.infrastructure.api.WeatherApiClient
-import com.example.presentation.controller.GeocodingController
-import com.example.presentation.controller.GetUserController
-import com.example.presentation.controller.HelloWorldController
-import com.example.presentation.controller.WeatherController
+import com.example.presentation.controller.*
 import com.example.presentation.handler.ExternalApiHandler
 import com.example.presentation.handler.HelloWorldHandler
 import com.example.presentation.handler.UserHandler
@@ -32,23 +26,24 @@ val appModule = module {
         }
     }
 
+    single { HelloWorldUseCase() }
+    single { HelloWorldController(get()) }
+    single { HelloWorldHandler(get()) }
+
     single { ExternalHttpClient(get()) }
     single { GeocodingApiClient(get()) }
+    single { GeocodingUseCase(get()) }
+    single { GeocodingController(get()) }
     single { WeatherApiClient(get()) }
+    single { WeatherUseCase(get()) }
+    single { WeatherController(get()) }
+    single { ExternalApiHandler(get(), get()) }
 
     single { UserRepository() }
 
-    single { HelloWorldUseCase() }
     single { GetUserUseCase(get()) }
-    single { GeocodingUseCase(get()) }
-    single { WeatherUseCase(get()) }
-
-    single { HelloWorldController(get()) }
     single { GetUserController(get()) }
-    single { GeocodingController(get()) }
-    single { WeatherController(get()) }
-
-    single { HelloWorldHandler(get()) }
-    single { UserHandler(get()) }
-    single { ExternalApiHandler(get(), get()) }
+    single { SaveUserUseCase(get()) }
+    single { SaveUserController(get()) }
+    single { UserHandler(get(), get()) }
 }

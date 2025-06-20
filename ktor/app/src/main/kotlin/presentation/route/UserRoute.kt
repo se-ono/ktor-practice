@@ -9,5 +9,9 @@ fun Route.userRoutes(handler: UserHandler) {
         get("{id}") {
             handler.getUser(call)
         }
+        // http://127.0.0.1:8081/users
+        post("") {
+            handler.saveUser(call)
+        }
     }
 }

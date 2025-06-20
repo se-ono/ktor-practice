@@ -1,11 +1,17 @@
 package com.example.presentation.handler
 
+import com.example.application.usecase.SaveUserRequest
 import com.example.presentation.controller.GetUserController
+import com.example.presentation.controller.SaveUserController
 import io.ktor.http.*
 import io.ktor.server.application.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 
-class UserHandler(private val controller: GetUserController) {
+class UserHandler(
+    private val getUserController: GetUserController,
+    private val saveUserController: SaveUserController
+) {
     suspend fun getUser(call: ApplicationCall) {
         val id = call.parameters["id"]?.toLongOrNull()
         if (id == null) {
@@ -13,11 +19,22 @@ class UserHandler(private val controller: GetUserController) {
             return
         }
 
-        val user = controller.getUser(id)
+        val user = getUserController.getUser(id)
         if (user == null) {
-            call.respond(mapOf<String, Any>())
+            call.respond(HttpStatusCode.OK, mapOf<String, Any>())
         } else {
-            call.respond(user)
+            call.respond(HttpStatusCode.OK, user)
         }
+    }
+
+    suspend fun saveUser(call: ApplicationCall) {
+        val request = call.receive<SaveUserRequest>()
+        if (request.name.isBlank()) {
+            call.respond(HttpStatusCode.BadRequest, "Invalid name")
+            return
+        }
+
+        saveUserController.saveUser(request)
+        call.respond(HttpStatusCode.OK)
     }
 }
