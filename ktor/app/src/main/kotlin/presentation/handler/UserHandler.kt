@@ -1,7 +1,9 @@
 package com.example.presentation.handler
 
+import com.example.application.usecase.DeleteUserRequest
 import com.example.application.usecase.SaveUserRequest
 import com.example.application.usecase.UpdateUserRequest
+import com.example.presentation.controller.DeleteUserController
 import com.example.presentation.controller.GetUserController
 import com.example.presentation.controller.SaveUserController
 import com.example.presentation.controller.UpdateUserController
@@ -14,6 +16,7 @@ class UserHandler(
     private val getUserController: GetUserController,
     private val saveUserController: SaveUserController,
     private val updateUserController: UpdateUserController,
+    private val deleteUserController: DeleteUserController,
 ) {
     suspend fun getUser(call: ApplicationCall) {
         val id = call.parameters["id"]?.toLongOrNull()
@@ -49,6 +52,13 @@ class UserHandler(
         }
 
         updateUserController.updateUser(request)
+        call.respond(HttpStatusCode.OK)
+    }
+
+    suspend fun deleteUser(call: ApplicationCall) {
+        val request = call.receive<DeleteUserRequest>()
+
+        deleteUserController.deleteUser(request)
         call.respond(HttpStatusCode.OK)
     }
 }

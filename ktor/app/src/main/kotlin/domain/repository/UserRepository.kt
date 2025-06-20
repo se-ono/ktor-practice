@@ -2,6 +2,8 @@ package com.example.domain.repository
 
 import com.example.domain.model.User
 import com.example.domain.table.UserTable
+import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
+import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -43,6 +45,13 @@ class UserRepository{
                 .update({ UserTable.id eq id }) {
                     it[UserTable.name] = userName
                 }
+        }
+    }
+
+    fun delete(id: Long) {
+        transaction {
+            UserTable
+                .deleteWhere { UserTable.id eq id }
         }
     }
 }

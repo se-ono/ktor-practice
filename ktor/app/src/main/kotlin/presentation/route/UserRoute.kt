@@ -17,5 +17,9 @@ fun Route.userRoutes(handler: UserHandler) {
         put("/update") {
             handler.updateUser(call)
         }
+        // http://127.0.0.1:8081/users/delete
+        delete("/delete") {
+            handler.deleteUser(call)
+        }
     }
 }
