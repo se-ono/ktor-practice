@@ -13,5 +13,9 @@ fun Route.userRoutes(handler: UserHandler) {
         post("") {
             handler.saveUser(call)
         }
+        // http://127.0.0.1:8081/users/update
+        put("/update") {
+            handler.updateUser(call)
+        }
     }
 }

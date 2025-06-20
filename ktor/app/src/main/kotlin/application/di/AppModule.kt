@@ -45,5 +45,7 @@ val appModule = module {
     single { GetUserController(get()) }
     single { SaveUserUseCase(get()) }
     single { SaveUserController(get()) }
-    single { UserHandler(get(), get()) }
+    single { UpdateUserUseCase(get()) }
+    single { UpdateUserController(get()) }
+    single { UserHandler(get(), get(), get()) }
 }

@@ -5,6 +5,7 @@ import com.example.domain.table.UserTable
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.jetbrains.exposed.sql.update
 
 class UserRepository{
     fun findById(id: Long): User? {
@@ -34,5 +35,14 @@ class UserRepository{
             savedUser = User(id = insertedId, name = userName)
         }
         return savedUser!!
+    }
+
+    fun update(id: Long, userName: String) {
+        transaction {
+            UserTable
+                .update({ UserTable.id eq id }) {
+                    it[UserTable.name] = userName
+                }
+        }
     }
 }
