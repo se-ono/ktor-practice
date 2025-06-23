@@ -46,6 +46,14 @@ dependencies {
     // テスト
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.launcher)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.h2)
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.register<JavaExec>("runDbMigrate") {
@@ -53,5 +61,3 @@ tasks.register<JavaExec>("runDbMigrate") {
     mainClass.set("com.example.batch.DBMigrateKt")
     classpath = sourceSets["main"].runtimeClasspath
 }
-
-
