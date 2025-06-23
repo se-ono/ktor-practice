@@ -1,8 +1,8 @@
 package com.example.presentation.handler
 
-import com.example.application.usecase.DeleteUserRequest
-import com.example.application.usecase.SaveUserRequest
-import com.example.application.usecase.UpdateUserRequest
+import com.example.application.request.DeleteUserRequest
+import com.example.application.request.SaveUserRequest
+import com.example.application.request.UpdateUserRequest
 import com.example.presentation.controller.*
 import io.ktor.http.*
 import io.ktor.server.application.*

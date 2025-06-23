@@ -1,6 +1,6 @@
 package com.example.presentation.controller
 
-import com.example.application.usecase.DeleteUserRequest
+import com.example.application.request.DeleteUserRequest
 import com.example.application.usecase.DeleteUserUseCase
 
 class DeleteUserController (private val deleteUserUseCase: DeleteUserUseCase) {
