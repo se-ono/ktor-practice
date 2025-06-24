@@ -1,9 +1,9 @@
+package application.usecase.user
 
-import com.example.application.usecase.GetUserUseCase
+import com.example.application.usecase.user.GetUserUseCase
 import com.example.domain.model.User
 import com.example.domain.repository.UserRepository
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNull
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.times
@@ -25,7 +25,7 @@ class GetUserUseCaseTest {
         val useCase = GetUserUseCase(mockRepo)
         val actualUser = useCase.execute(userId)
 
-        assertEquals(expectedUser, actualUser)
+        Assertions.assertEquals(expectedUser, actualUser)
         verify(mockRepo, times(1)).findById(userId)
     }
 
@@ -42,7 +42,7 @@ class GetUserUseCaseTest {
         val useCase = GetUserUseCase(mockRepo)
         val result = useCase.execute(userId)
 
-        assertNull(result)
+        Assertions.assertNull(result)
         verify(mockRepo, times(1)).findById(userId)
     }
 }

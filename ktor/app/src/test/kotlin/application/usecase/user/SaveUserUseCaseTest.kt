@@ -1,7 +1,7 @@
-package application.usecase
+package application.usecase.user
 
-import com.example.application.request.SaveUserRequest
-import com.example.application.usecase.SaveUserUseCase
+import com.example.application.request.user.SaveUserRequest
+import com.example.application.usecase.user.SaveUserUseCase
 import com.example.domain.repository.UserRepository
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.mock

@@ -1,7 +1,7 @@
 package com.example.presentation.handler
 
-import com.example.presentation.controller.GeocodingController
-import com.example.presentation.controller.WeatherController
+import com.example.presentation.controller.externaiApi.GeocodingController
+import com.example.presentation.controller.externaiApi.WeatherController
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*

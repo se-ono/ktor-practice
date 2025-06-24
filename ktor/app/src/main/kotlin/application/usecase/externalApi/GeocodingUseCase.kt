@@ -1,4 +1,4 @@
-package com.example.application.usecase
+package com.example.application.usecase.externalApi
 
 import com.example.infrastructure.api.Coordinate
 import com.example.infrastructure.api.GeocodingApiClient

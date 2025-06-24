@@ -1,7 +1,7 @@
-package com.example.presentation.controller
+package com.example.presentation.controller.user
 
-import com.example.application.request.DeleteUserRequest
-import com.example.application.usecase.DeleteUserUseCase
+import com.example.application.request.user.DeleteUserRequest
+import com.example.application.usecase.user.DeleteUserUseCase
 
 class DeleteUserController (private val deleteUserUseCase: DeleteUserUseCase) {
     fun deleteUser(deleteUserRequest: DeleteUserRequest) {

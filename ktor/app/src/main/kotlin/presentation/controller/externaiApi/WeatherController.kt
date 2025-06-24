@@ -1,6 +1,6 @@
-package com.example.presentation.controller
+package com.example.presentation.controller.externaiApi
 
-import com.example.application.usecase.WeatherUseCase
+import com.example.application.usecase.externalApi.WeatherUseCase
 import com.example.infrastructure.api.WeatherResponse
 
 class WeatherController(private val useCase: WeatherUseCase) {

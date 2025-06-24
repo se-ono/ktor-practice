@@ -1,4 +1,4 @@
-package com.example.application.request
+package com.example.application.request.user
 
 import kotlinx.serialization.Serializable
 

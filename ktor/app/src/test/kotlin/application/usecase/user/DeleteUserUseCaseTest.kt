@@ -1,6 +1,7 @@
-package application.usecase
-import com.example.application.request.DeleteUserRequest
-import com.example.application.usecase.DeleteUserUseCase
+package application.usecase.user
+
+import com.example.application.request.user.DeleteUserRequest
+import com.example.application.usecase.user.DeleteUserUseCase
 import com.example.domain.repository.UserRepository
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.mock

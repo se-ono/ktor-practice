@@ -1,4 +1,4 @@
-package com.example.application.usecase
+package com.example.application.usecase.externalApi
 
 import com.example.infrastructure.api.WeatherApiClient
 import com.example.infrastructure.api.WeatherResponse

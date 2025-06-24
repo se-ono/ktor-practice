@@ -1,6 +1,6 @@
-package com.example.presentation.controller
+package com.example.presentation.controller.user
 
-import com.example.application.usecase.GetUsersUseCase
+import com.example.application.usecase.user.GetUsersUseCase
 import com.example.domain.model.User
 
 class GetUsersController(private val getUsersUseCase: GetUsersUseCase) {

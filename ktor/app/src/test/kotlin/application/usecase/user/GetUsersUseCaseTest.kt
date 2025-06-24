@@ -1,6 +1,6 @@
-package application.usecase
+package application.usecase.user
 
-import com.example.application.usecase.GetUsersUseCase
+import com.example.application.usecase.user.GetUsersUseCase
 import com.example.domain.model.User
 import com.example.domain.repository.UserRepository
 import org.junit.jupiter.api.Test

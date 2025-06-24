@@ -1,6 +1,6 @@
-package com.example.presentation.controller
+package com.example.presentation.controller.externaiApi
 
-import com.example.application.usecase.GeocodingUseCase
+import com.example.application.usecase.externalApi.GeocodingUseCase
 import com.example.infrastructure.api.Coordinate
 
 class GeocodingController(private val geocodingUseCase: GeocodingUseCase)

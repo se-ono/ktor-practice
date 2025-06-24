@@ -1,9 +1,14 @@
 package com.example.presentation.handler
 
-import com.example.application.request.DeleteUserRequest
-import com.example.application.request.SaveUserRequest
-import com.example.application.request.UpdateUserRequest
+import com.example.application.request.user.DeleteUserRequest
+import com.example.application.request.user.SaveUserRequest
+import com.example.application.request.user.UpdateUserRequest
 import com.example.presentation.controller.*
+import com.example.presentation.controller.user.DeleteUserController
+import com.example.presentation.controller.user.GetUserController
+import com.example.presentation.controller.user.GetUsersController
+import com.example.presentation.controller.user.SaveUserController
+import com.example.presentation.controller.user.UpdateUserController
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*

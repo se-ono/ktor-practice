@@ -1,6 +1,6 @@
 package com.example.presentation.handler
 
-import com.example.presentation.controller.HelloWorldController
+import com.example.presentation.controller.helloWorld.HelloWorldController
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 

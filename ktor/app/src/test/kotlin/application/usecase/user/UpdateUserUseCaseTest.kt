@@ -1,7 +1,7 @@
-package application.usecase
+package application.usecase.user
 
-import com.example.application.request.UpdateUserRequest
-import com.example.application.usecase.UpdateUserUseCase
+import com.example.application.request.user.UpdateUserRequest
+import com.example.application.usecase.user.UpdateUserUseCase
 import com.example.domain.repository.UserRepository
 import org.junit.jupiter.api.Test
 import org.mockito.kotlin.mock

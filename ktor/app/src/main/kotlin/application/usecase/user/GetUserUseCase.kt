@@ -1,4 +1,4 @@
-package com.example.application.usecase
+package com.example.application.usecase.user
 
 import com.example.domain.model.User
 import com.example.domain.repository.UserRepository
